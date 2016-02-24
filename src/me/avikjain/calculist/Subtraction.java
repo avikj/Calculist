@@ -12,8 +12,8 @@ public class Subtraction extends Function {
 	}
 
 	@Override
-	public Function derivative() {
-		return new Subtraction(arguments[0].derivative(), arguments[1].derivative());
+	public Function derivative(Variable indVar) {
+		return new Subtraction(arguments[0].derivative(indVar), arguments[1].derivative(indVar));
 	}
 	
 	@Override

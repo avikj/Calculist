@@ -12,7 +12,7 @@ public class Power extends Function {
 	}
 
 	@Override
-	public Function derivative() {	
+	public Function derivative(Variable indVar) {	
 		return new Multiplication(
 			new Multiplication(
 				arguments[1], 
@@ -24,8 +24,13 @@ public class Power extends Function {
 					)
 				)
 			),
-			arguments[0].derivative()	//apply chain rule
+			arguments[0].derivative(indVar)	//apply chain rule
 		);
+	}
+	
+	@Override
+	public String toString(){
+		return String.format("(%s ^ %s)", arguments[0], arguments[1]);
 	}
 
 }

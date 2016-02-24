@@ -13,5 +13,6 @@ public class ConstantTester {
 		
 		Constant pi = new Constant(Math.PI);
 		System.out.println(pi);
+		
 	}
 }

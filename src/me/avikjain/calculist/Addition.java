@@ -11,8 +11,11 @@ public class Addition extends Function {
 	}
 
 	@Override
-	public Function derivative() {
-		return new Addition(arguments[0].derivative(), arguments[1].derivative());
+	public Function derivative(Variable indVar) {
+		return new Addition(
+			arguments[0].derivative(indVar), 
+			arguments[1].derivative(indVar)
+		);
 	}
 	
 	@Override

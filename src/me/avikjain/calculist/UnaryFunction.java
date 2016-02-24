@@ -12,8 +12,8 @@ public abstract class UnaryFunction extends Function {
 	}
 	
 	@Override
-	public Function derivative() {
-		return new Multiplication(basicDerivative(), arguments[0].derivative());
+	public Function derivative(Variable indVar) {
+		return new Multiplication(basicDerivative(), arguments[0].derivative(indVar));
 	}
 	
 	@Override

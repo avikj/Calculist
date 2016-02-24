@@ -12,10 +12,10 @@ public class Multiplication extends Function {
 	}
 
 	@Override
-	public Function derivative() {
+	public Function derivative(Variable indVar) {
 		return new Addition(
-			new Multiplication(arguments[0], arguments[1].derivative()), 
-			new Multiplication(arguments[0].derivative(), arguments[1])
+			new Multiplication(arguments[0], arguments[1].derivative(indVar)), 
+			new Multiplication(arguments[0].derivative(indVar), arguments[1])
 		);
 	}
 	
