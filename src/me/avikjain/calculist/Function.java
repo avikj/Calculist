@@ -6,11 +6,10 @@ public abstract class Function {
 	
 	public Function(Function... arguments){
 		this.arguments = arguments;
-		simplify();
 	}
 	public abstract double evaluate();
 	public abstract Function derivative(Variable indVar);
-	
+	public abstract Function copy();
 	public boolean isConstant(){
 		return this instanceof Constant;
 	}
@@ -33,16 +32,17 @@ public abstract class Function {
 		return false;
 	}
 	
+	@Override
 	public boolean equals(Object other){
-		// check that 'other' is a function
-		if(other instanceof Function){
+		// check that 'other' is a function of the same type as this
+		if(this.getClass().equals(other.getClass())){
 			Function otherFunction = (Function)other;
 			
 			// check that 'other' has the same number of arguments as this
 			if(otherFunction.arguments.length != arguments.length)
 				return false;
 			
-			// check that the arguments in 'other' and this are the same
+			// check that the arguments in 'other' and this are the same 
 			for(int i = 0; i < arguments.length; i++)
 				if(!otherFunction.arguments[i].equals(arguments[i]))
 					return false;
@@ -51,14 +51,27 @@ public abstract class Function {
 		return false;
 	}
 	
-	private void simplify(){
-		for(int i = 0; i < arguments.length; i++){
-			
-			// if the argument consists only of constants,
-			// represent it as a constant
-			if(!arguments[i].containsVar()){
-				arguments[i] = new Constant(arguments[i].evaluate());
-			}
+	public final Function simplify(){
+		Function result = this.copy();
+		// if the function consists only of constants,
+		// represent it as a constant
+		
+		if(!result.containsVar() && !result.isConstant()){
+			result = new Constant(result.evaluate());
 		}
+		for(int i = 0; i < result.arguments.length; i++){			
+			result.arguments[i] = result.arguments[i].simplify();
+		}
+		
+		return result.implementSimplify();
+	}
+	
+	protected Function implementSimplify(){
+		return this;
+	}
+	
+	@Override
+	public Object clone(){
+		return this.copy();
 	}
 }

@@ -22,9 +22,20 @@ public class Constant extends Function {
 	public Function derivative(Variable indVar) {
 		return new Constant(0.0);
 	}
+	
+	@Override
+	public Function copy(){
+		return new Constant(value);
+	}
 
 	@Override
 	public String toString(){
 		return value >= 0 ? value + "" : "("+value+")";
+	}
+	
+	@Override
+	public boolean equals(Object other){
+		return other instanceof Constant
+				&& ((Constant)other).value == value;
 	}
 }

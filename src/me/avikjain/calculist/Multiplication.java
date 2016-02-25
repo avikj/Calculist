@@ -20,7 +20,26 @@ public class Multiplication extends Function {
 	}
 	
 	@Override
+	public Function copy(){
+		return new Multiplication(arguments[0].copy(), arguments[1].copy());
+	}
+	
+	@Override
 	public String toString(){
 		return String.format("(%s * %s)", arguments[0], arguments[1]);
+	}
+	
+	@Override
+	public Function implementSimplify(){
+		if(arguments[0].equals(Constant.ONE))
+			return arguments[1];
+		if(arguments[1].equals(Constant.ONE))
+			return arguments[0];
+		
+		if(arguments[0].equals(Constant.NEGATIVE_ONE))
+			return new Negation(arguments[1]);
+		if(arguments[1].equals(Constant.NEGATIVE_ONE))
+			return new Negation(arguments[0]);
+		return this;
 	}
 }

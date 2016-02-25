@@ -29,6 +29,11 @@ public class Power extends Function {
 	}
 	
 	@Override
+	public Function copy(){
+		return new Power(arguments[0].copy(), arguments[1].copy());
+	}
+	
+	@Override
 	public String toString(){
 		return String.format("(%s ^ %s)", arguments[0], arguments[1]);
 	}

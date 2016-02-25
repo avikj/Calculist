@@ -19,6 +19,11 @@ public class Variable extends Function{
 	}
 	
 	@Override
+	public Function copy(){
+		return new Variable(name, value);
+	}
+	
+	@Override
 	public String toString(){
 		return name;
 	}
@@ -26,5 +31,11 @@ public class Variable extends Function{
 	@Override
 	public Function derivative(Variable indVar) {
 		return this.equals(indVar) ? Constant.ONE : Constant.ZERO;
+	}
+	
+	@Override
+	public boolean equals(Object other){
+		return other instanceof Variable
+				&& ((Variable)other).name.equals(name);
 	}
 }
