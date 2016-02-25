@@ -1,6 +1,6 @@
 package me.avikjain.calculist;
 
-public class Power extends Function {
+public class Power extends BinaryOperator {
 	
 	public Power(Function base, Function exponent){
 		super(base, exponent);
@@ -34,8 +34,8 @@ public class Power extends Function {
 	}
 	
 	@Override
-	public String toString(){
-		return String.format("(%s ^ %s)", arguments[0], arguments[1]);
+	protected String getSymbol() {
+		return "^";
 	}
 
 }

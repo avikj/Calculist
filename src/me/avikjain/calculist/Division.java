@@ -6,7 +6,7 @@ public class Division extends Multiplication {
 	}
 	
 	@Override
-	public String toString(){
-		return String.format("(%s / %s)", arguments[0], arguments[1]);
+	public String getSymbol(){
+		return "/";
 	}
 }

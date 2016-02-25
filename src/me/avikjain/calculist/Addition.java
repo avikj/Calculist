@@ -1,6 +1,6 @@
 package me.avikjain.calculist;
 
-public class Addition extends Function {
+public class Addition extends BinaryOperator {
 	public Addition(Function a, Function b){
 		super(a, b);
 	}
@@ -22,8 +22,8 @@ public class Addition extends Function {
 		return new Addition(arguments[0].copy(), arguments[1].copy());
 	}
 	@Override
-	public String toString(){
-		return String.format("(%s + %s)", arguments[0], arguments[1]);
+	public String getSymbol(){
+		return "+";
 	}
 	
 	@Override

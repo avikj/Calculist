@@ -1,6 +1,6 @@
 package me.avikjain.calculist;
 
-public class Multiplication extends Function {
+public class Multiplication extends BinaryOperator {
 
 	public Multiplication(Function a, Function b){
 		super(a, b);
@@ -25,11 +25,6 @@ public class Multiplication extends Function {
 	}
 	
 	@Override
-	public String toString(){
-		return String.format("(%s * %s)", arguments[0], arguments[1]);
-	}
-	
-	@Override
 	public Function implementSimplify(){
 		if(arguments[0].equals(Constant.ONE))
 			return arguments[1];
@@ -41,5 +36,10 @@ public class Multiplication extends Function {
 		if(arguments[1].equals(Constant.NEGATIVE_ONE))
 			return new Negation(arguments[0]);
 		return this;
+	}
+
+	@Override
+	protected String getSymbol() {
+		return "*";
 	}
 }
