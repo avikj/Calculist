@@ -12,7 +12,7 @@ public class Power extends BinaryOperator {
 	}
 
 	@Override
-	public Function derivative(Variable indVar) {	
+	public Function derivative(Variable indVar) {	//	arg1 * arg0^(arg1 - 1) * d/dx(arg0)
 		return new Multiplication(
 			new Multiplication(
 				arguments[1], 
@@ -36,6 +36,20 @@ public class Power extends BinaryOperator {
 	@Override
 	protected String getSymbol() {
 		return "^";
+	}
+	
+
+	@Override
+	protected Function implementSimplify(){
+		if(arguments[1].equals(Constant.ONE))		
+			return arguments[0].simplify();
+		if(arguments[1].equals(Constant.ZERO))
+			return Constant.ONE;
+		if(arguments[0].equals(Constant.ONE))
+			return Constant.ONE;
+		if(arguments[0].equals(Constant.ZERO))
+			return Constant.ZERO;
+		return this;
 	}
 
 }

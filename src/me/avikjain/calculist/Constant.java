@@ -5,6 +5,9 @@ public class Constant extends Function {
 	public static final Constant ONE = new Constant(1.0);
 	public static final Constant ZERO = new Constant(0.0);
 	public static final Constant NEGATIVE_ONE = new Constant(-1.0);
+	public static final Constant PI = new Constant(Math.PI);
+	public static final Constant E = new Constant(Math.E);
+	
 	
 	private double value;
 	
@@ -30,6 +33,8 @@ public class Constant extends Function {
 
 	@Override
 	public String toString(){
+		if((int)value - value == 0.0)
+			return value >= 0 ? (int)value + "" : "("+(int)value+")";
 		return value >= 0 ? value + "" : "("+value+")";
 	}
 	
@@ -38,4 +43,5 @@ public class Constant extends Function {
 		return other instanceof Constant
 				&& ((Constant)other).value == value;
 	}
+	
 }

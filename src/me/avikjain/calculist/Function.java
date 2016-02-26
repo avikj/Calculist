@@ -1,5 +1,7 @@
 package me.avikjain.calculist;
 
+import java.util.Arrays;
+
 public abstract class Function {
 	// TODO determine best way to implement simplification (method called in constructor, public method, class, etc.S
 	protected Function[] arguments;
@@ -73,5 +75,11 @@ public abstract class Function {
 	@Override
 	public Object clone(){
 		return this.copy();
+	}
+	
+	@Override
+	public String toString(){
+		return String.format("%s(%s)", this.getClass().getSimpleName().toLowerCase(),
+				Arrays.toString(arguments).substring(1, Arrays.toString(arguments).length()-1));
 	}
 }
