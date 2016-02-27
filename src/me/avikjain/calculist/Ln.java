@@ -21,4 +21,14 @@ public class Ln extends Function {
 		return new Ln(arguments[0]);
 	}
 
+	@Override
+	public Function implementSimplify(){
+		if(arguments[0].equals(Constant.E))
+			return Constant.ONE;
+		if(arguments[0] instanceof Power){
+			Power arg0 = (Power)arguments[0];
+			return new Multiplication(arg0.arguments[1], new Ln(arg0.arguments[1]));
+		}
+		return this.copy();
+	}
 }

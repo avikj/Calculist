@@ -42,7 +42,7 @@ public class Power extends BinaryOperator {
 	@Override
 	protected Function implementSimplify(){
 		if(arguments[1].equals(Constant.ONE))		
-			return arguments[0].simplify();
+			return arguments[0].copy();
 		if(arguments[1].equals(Constant.ZERO))
 			return Constant.ONE;
 		if(arguments[0].equals(Constant.ONE))

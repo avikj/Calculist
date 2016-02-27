@@ -29,9 +29,9 @@ public class Addition extends BinaryOperator {
 	@Override
 	protected Function implementSimplify(){
 		if(arguments[0].simplify().equals(Constant.ZERO))
-			return arguments[1].simplify();
+			return arguments[1].copy();
 		if(arguments[1].simplify().equals(Constant.ZERO))
-			return arguments[0].simplify();
+			return arguments[0].copy();
 		return this.copy();
 	}
 
