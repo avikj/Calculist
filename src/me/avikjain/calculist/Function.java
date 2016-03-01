@@ -1,6 +1,8 @@
 package me.avikjain.calculist;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public abstract class Function {
 	protected Function[] arguments;
@@ -113,4 +115,9 @@ public abstract class Function {
 			copy[i] = arguments[i].copy();
 		return copy;
 	}
+	
+	
+	public static void main(String[] args){
+	}
 }
+

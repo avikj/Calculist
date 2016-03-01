@@ -2,14 +2,18 @@ package me.avikjain.calculist;
 
 public class Variable extends Function{
 	private String name;
-	private int value;
+	private double value;
 	public Variable(String name) {
 		this.name = name;
 		this.value = 0;
 	}
 	
-	public Variable(String name, int value){
+	public Variable(String name, double value){
 		this.name = name;
+		this.value = value;
+	}
+	
+	public void setValue(double value){
 		this.value = value;
 	}
 	

@@ -18,9 +18,9 @@ public class Power extends BinaryOperator {
 				arguments[1], 
 				new Power(
 					arguments[0], 
-					new Subtraction(
+					new Addition(
 						arguments[1],
-						Constant.ONE
+						Constant.NEGATIVE_ONE
 					)
 				)
 			),
