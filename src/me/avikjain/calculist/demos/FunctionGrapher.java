@@ -2,18 +2,14 @@ package me.avikjain.calculist.demos;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import me.avikjain.calculist.Addition;
 import me.avikjain.calculist.Constant;
 import me.avikjain.calculist.Function;
-import me.avikjain.calculist.Multiplication;
 import me.avikjain.calculist.Power;
-import me.avikjain.calculist.Sin;
 import me.avikjain.calculist.Variable;
 
 public class FunctionGrapher {
