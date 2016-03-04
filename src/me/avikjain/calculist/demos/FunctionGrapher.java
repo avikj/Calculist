@@ -67,6 +67,7 @@ public class FunctionGrapher {
 		new FunctionGrapher();
 	}
 	
+	// canvas on which the graph is drawn
 	class GraphPanel extends JPanel{
 		@Override
 		public void paintComponent(Graphics g){
@@ -90,7 +91,7 @@ public class FunctionGrapher {
 					
 					xs.add(x0);
 					ys.add(y0);
-				}catch(Exception e){
+				}catch(ArithmeticException e){
 					
 				}
 				
@@ -107,10 +108,11 @@ public class FunctionGrapher {
 			}
 		}
 		
+		// convert cartesian y coordinate to y coordinate for display
 		public int transformY(double y){
 			return (int)(getHeight()-getHeight()*(y-ymin)/(ymax-ymin));
 		}
-		
+		// convrt cartesian x coordinate to x coordinate for display
 		public int transformX(double x){
 			return (int)(getWidth()*(x-xmin)/(xmax-xmin));
 		}
